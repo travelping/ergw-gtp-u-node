@@ -5,6 +5,7 @@ ergw-gtp-u-node (0.1.0~ppa3) unstable; urgency=medium
   * fix HOME directory in systemd service
   * upgrade gtplib for missing ppp dependency
   * make pre-start.sh executable
+  * strip source from release
 
  -- Andreas Schultz <aschultz@warp10.net>  Fri, 07 Oct 2016 09:38:00 +0200
 
