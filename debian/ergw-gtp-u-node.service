@@ -6,7 +6,7 @@ After=multi-user.target
 ExecStartPre=-/etc/ergw-gtp-u-node/pre-start.sh
 ExecStart=/usr/bin/ergw-gtp-u-node foreground
 Type=simple
-Environment="HOME=/home/root"
+Environment="HOME=/root"
 Restart=always
 
 [Install]

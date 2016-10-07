@@ -2,6 +2,7 @@ ergw-gtp-u-node (0.1.0~ppa3) unstable; urgency=medium
 
   * fix GTP-u node name default
   * add debian /etc/network/interfaces.d/ config
+  * fix HOME directory in systemd service
 
  -- Andreas Schultz <aschultz@warp10.net>  Fri, 07 Oct 2016 09:38:00 +0200
 
