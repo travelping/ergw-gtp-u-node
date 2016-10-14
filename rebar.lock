@@ -44,7 +44,7 @@
   0},
  {<<"gtplib">>,
   {git,"https://github.com/travelping/gtplib.git",
-       {ref,"ff3fa5cd7f1875b9f888dfa4c17cad79b35c718c"}},
+       {ref,"94f853c770719a6ae7639b59ad7f4d8d569f6d4a"}},
   1},
  {<<"hut">>,
   {git,"git://github.com/tolbrino/hut.git",
