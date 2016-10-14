@@ -27,7 +27,8 @@ after_success:
   - echo "Done"
 
 notifications:
-  email: false
+  slack:
+  - secure: "bwk2/vd/EcAEzb9p31G+eI6VscKTlpX5glh2oL31M/5QmWgjPpa1tHwLck11HjNHBdKcnQ2Po9axTn09gMnUGP9XpnYgvmCdx10Qnry4S1O0i2DDICW8txXQY7POUoFGAlbfIVLevsx4Z4RJn1lqivRfQ+t6eHVa8uYobjpwrymg9Xgtq7+nIk08zXZn6OIRPJZT+YdmJKA74SGk/l6FAoqhVNjDVd6IgmAuYTUeqwQfl3Y4dxPCgqeJTovyb0z79dHSGmqSQxqw9sMAE7U+fq8b2c8BvUOb5dJp/Kd2HyNLgKSnt0KtcvKKnRhwYCLorctc9hoYnl9dvfwqm1UgR9mdWDDbu470j4xj5s8HWr1+zCqw2eSooBLPRbE8Qoe9I2OZ3NhryduGNIsRLW1A32TCemsRXZG6h96Sun/YZuEREKCzNR8Kdj35m6Mxj/aBbSE7ALWK3QjHq5Z4SV/UMRGtCRlm/WK+AO10cxSH7E1siud++5ZwtIogFQPZB40uJOlKnIDmyirk8jX2Vojkcy5/xG+HFeUQkXmM1JtAEIhrGOS2hZcs79jqGGEXoCOJ0MSxtdlkh03Z+eu7gJmAel0lrZ9sEv2NxXqDexti+HxYdpDzu4Gwy8d4NjhYMaITjsJyy6v1gQfy8W3bJkCzvb1GpebY3iWS72HUXXrMJ9g="
 
 branches:
   only:
