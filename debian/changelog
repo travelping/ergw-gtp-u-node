@@ -1,3 +1,9 @@
+ergw-gtp-u-node (1.0.0-0) unstable; urgency=medium
+
+  * release version 1.0.0
+
+ -- Andreas Schultz <aschultz@warp10.net>  Thu, 17 Nov 2016 14:09:10 +0100
+
 ergw-gtp-u-node (0.1.0-0) unstable; urgency=medium
 
   * make vm.args and sys.config proper conffiles
