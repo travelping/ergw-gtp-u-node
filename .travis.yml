@@ -3,10 +3,15 @@ sudo: required
 services:
   - docker
 
-env:
-  global:
-    - BINTRAY_USER=roadrunnr
-    - secure: "WtyKzfPZKsXwDSq+PJYpkUC98TF+bT3r5ZJxs23vM9GH9wd0PGU9AXwlsUu+xIOtgy05Gw9SqCeOwoQrxn39IRvj3rzuH7SqAktMXXCutCM5/+hQFpc6yuODpql1cQlB+j0xfDt218vnZRums/qxsn463W0wrktz9rheH3+mQl7/sLvcdmiHxt8B2zYIWRHOPySmyhyOER1+BGUTjvPEkdVQxFAbAME1BFihcRNuEQ4742pQ4LpK6PKZeeJ7AdRZRTK3VcH0qFQ4AbgomrOSQMwzo6H/RyJ7nnVnyz4X7PSVVNnKOauzUP+HJ/Vhhx5TMJ6q90OaKPyP9a5E0KeZKnvxE4aEOdTIsIK/sKn8q9rnz7wrHrhcMSiamsa+TGHtZlkjXEGpLs542vNGPgnkIUaYwctw4PpahM1uJ/SWlcn5MseAlSTCSndeES1uVTzgG4QwqyL/8BWKsVF+rL3L+tC5RiHwhgH7FX7poYwZUfyeN3t+tyVFea+8fcGTMIcIXwT/XGjv3Q0Xm8mvfEfY1eXsu5w8r7zx3CU2Q+6M+hKR8gETXSypuctrK7EHmznmbSlq0Mp8gkYJq3tk7jclR9t7FeQdkVxxW0eGNuohCxYAQKX5E5MqeXDjL5LxBeFMRowxHUx9Z78sR38TA3tKrLq0CePsJIPPTAC6Q48TEeE="
+deploy:
+  provider: packagecloud
+  repository: "ci"
+  username: "ergw"
+  token:
+    secure: "K5/mJAu77siVHj4YTELYdqjwhsnSExV60asWCn718PfjHulgzXpQhraFlvn9PxRVmtUYe9nh6F3wzNJKO76Hruc9BpaDRnzd89Ze0dsHaCSWI82zZ7jNRnU2N2ScPF8d3EXm91VePkpKBa/3Q98ZgbA4vOb8ZJ9T5xKOPqbDA1Vr+7s3kN95uOljcDluSj/SDAn6fp+yUI47acecgtTTAI402f7DAu+DM+OSrPc/JuN8ecPX3TyWZNRTkvfaet1VtHvifItYv331x1dBvWA5XiQZz6dpkVg9EcFbLh/gOeHzpKmDTV6wWq+go3R2M+G+Y1x1l95QRjCyWbFtpcgqp7oAJNk5dRVlNnNs8wW5mR2l4oe2RucMtWnch0eVWK0i0PV5TPljGfHOGnvKhGWaCTJe5RWrqyfF4CvbsO00jRFRNlQPMXgnnOtr23PhFzvciImy4a0gZV569Lgk40Uwh/f+8BOnigkdfoJqVXwiMVGQDHDJYYK8MPBklLGrHp2wP6tpg4Ik2jW45BBlb74XyFvgC7SsqwXaKdzRityWVOwB1TlCK5QGwxgEvrgjQ3fDgtrYqp1kw+cxMKkBF5K6lWyYL5q7DQWOEopAmH6/uoJ3UPbAcqYR3JTzI/hQZXYqLUjYe8/RJUWbiBm//2YX3eVAdlB5dS/WGiTuFUIU3eY="
+  dist: "ubuntu/xenial"
+  skip_cleanup: true
+  package_glob: artifacts/*.deb
 
 before_install:
   - sudo apt-get -qq update
@@ -21,10 +26,6 @@ script:
     sh -c "
       dpkg-buildpackage -b -uc && cp ../*deb artifacts
     "
-
-after_success:
-  - priv/upload_bintray.sh
-  - echo "Done"
 
 notifications:
   slack:
