@@ -3,15 +3,15 @@ sudo: required
 services:
   - docker
 
-#deploy:
-  #provider: packagecloud
-  #repository: "ci"
-  #username: "ergw"
-  #token:
-    #secure: "K5/mJAu77siVHj4YTELYdqjwhsnSExV60asWCn718PfjHulgzXpQhraFlvn9PxRVmtUYe9nh6F3wzNJKO76Hruc9BpaDRnzd89Ze0dsHaCSWI82zZ7jNRnU2N2ScPF8d3EXm91VePkpKBa/3Q98ZgbA4vOb8ZJ9T5xKOPqbDA1Vr+7s3kN95uOljcDluSj/SDAn6fp+yUI47acecgtTTAI402f7DAu+DM+OSrPc/JuN8ecPX3TyWZNRTkvfaet1VtHvifItYv331x1dBvWA5XiQZz6dpkVg9EcFbLh/gOeHzpKmDTV6wWq+go3R2M+G+Y1x1l95QRjCyWbFtpcgqp7oAJNk5dRVlNnNs8wW5mR2l4oe2RucMtWnch0eVWK0i0PV5TPljGfHOGnvKhGWaCTJe5RWrqyfF4CvbsO00jRFRNlQPMXgnnOtr23PhFzvciImy4a0gZV569Lgk40Uwh/f+8BOnigkdfoJqVXwiMVGQDHDJYYK8MPBklLGrHp2wP6tpg4Ik2jW45BBlb74XyFvgC7SsqwXaKdzRityWVOwB1TlCK5QGwxgEvrgjQ3fDgtrYqp1kw+cxMKkBF5K6lWyYL5q7DQWOEopAmH6/uoJ3UPbAcqYR3JTzI/hQZXYqLUjYe8/RJUWbiBm//2YX3eVAdlB5dS/WGiTuFUIU3eY="
-  #dist: "ubuntu/xenial"
-  #skip_cleanup: true
-  #package_glob: artifacts/*.deb
+deploy:
+  provider: packagecloud
+  repository: "ci"
+  username: "ergw"
+  token:
+    secure: "K5/mJAu77siVHj4YTELYdqjwhsnSExV60asWCn718PfjHulgzXpQhraFlvn9PxRVmtUYe9nh6F3wzNJKO76Hruc9BpaDRnzd89Ze0dsHaCSWI82zZ7jNRnU2N2ScPF8d3EXm91VePkpKBa/3Q98ZgbA4vOb8ZJ9T5xKOPqbDA1Vr+7s3kN95uOljcDluSj/SDAn6fp+yUI47acecgtTTAI402f7DAu+DM+OSrPc/JuN8ecPX3TyWZNRTkvfaet1VtHvifItYv331x1dBvWA5XiQZz6dpkVg9EcFbLh/gOeHzpKmDTV6wWq+go3R2M+G+Y1x1l95QRjCyWbFtpcgqp7oAJNk5dRVlNnNs8wW5mR2l4oe2RucMtWnch0eVWK0i0PV5TPljGfHOGnvKhGWaCTJe5RWrqyfF4CvbsO00jRFRNlQPMXgnnOtr23PhFzvciImy4a0gZV569Lgk40Uwh/f+8BOnigkdfoJqVXwiMVGQDHDJYYK8MPBklLGrHp2wP6tpg4Ik2jW45BBlb74XyFvgC7SsqwXaKdzRityWVOwB1TlCK5QGwxgEvrgjQ3fDgtrYqp1kw+cxMKkBF5K6lWyYL5q7DQWOEopAmH6/uoJ3UPbAcqYR3JTzI/hQZXYqLUjYe8/RJUWbiBm//2YX3eVAdlB5dS/WGiTuFUIU3eY="
+  dist: "ubuntu/xenial"
+  skip_cleanup: true
+  package_glob: artifacts/*.deb
 
 env:
   global:
@@ -37,10 +37,10 @@ after_success:
   - docker push $BUILD_IMAGE 
   - echo "docker push done"
 
-#notifications:
-  #slack:
-  #- secure: "bwk2/vd/EcAEzb9p31G+eI6VscKTlpX5glh2oL31M/5QmWgjPpa1tHwLck11HjNHBdKcnQ2Po9axTn09gMnUGP9XpnYgvmCdx10Qnry4S1O0i2DDICW8txXQY7POUoFGAlbfIVLevsx4Z4RJn1lqivRfQ+t6eHVa8uYobjpwrymg9Xgtq7+nIk08zXZn6OIRPJZT+YdmJKA74SGk/l6FAoqhVNjDVd6IgmAuYTUeqwQfl3Y4dxPCgqeJTovyb0z79dHSGmqSQxqw9sMAE7U+fq8b2c8BvUOb5dJp/Kd2HyNLgKSnt0KtcvKKnRhwYCLorctc9hoYnl9dvfwqm1UgR9mdWDDbu470j4xj5s8HWr1+zCqw2eSooBLPRbE8Qoe9I2OZ3NhryduGNIsRLW1A32TCemsRXZG6h96Sun/YZuEREKCzNR8Kdj35m6Mxj/aBbSE7ALWK3QjHq5Z4SV/UMRGtCRlm/WK+AO10cxSH7E1siud++5ZwtIogFQPZB40uJOlKnIDmyirk8jX2Vojkcy5/xG+HFeUQkXmM1JtAEIhrGOS2hZcs79jqGGEXoCOJ0MSxtdlkh03Z+eu7gJmAel0lrZ9sEv2NxXqDexti+HxYdpDzu4Gwy8d4NjhYMaITjsJyy6v1gQfy8W3bJkCzvb1GpebY3iWS72HUXXrMJ9g="
+notifications:
+  slack:
+  - secure: "bwk2/vd/EcAEzb9p31G+eI6VscKTlpX5glh2oL31M/5QmWgjPpa1tHwLck11HjNHBdKcnQ2Po9axTn09gMnUGP9XpnYgvmCdx10Qnry4S1O0i2DDICW8txXQY7POUoFGAlbfIVLevsx4Z4RJn1lqivRfQ+t6eHVa8uYobjpwrymg9Xgtq7+nIk08zXZn6OIRPJZT+YdmJKA74SGk/l6FAoqhVNjDVd6IgmAuYTUeqwQfl3Y4dxPCgqeJTovyb0z79dHSGmqSQxqw9sMAE7U+fq8b2c8BvUOb5dJp/Kd2HyNLgKSnt0KtcvKKnRhwYCLorctc9hoYnl9dvfwqm1UgR9mdWDDbu470j4xj5s8HWr1+zCqw2eSooBLPRbE8Qoe9I2OZ3NhryduGNIsRLW1A32TCemsRXZG6h96Sun/YZuEREKCzNR8Kdj35m6Mxj/aBbSE7ALWK3QjHq5Z4SV/UMRGtCRlm/WK+AO10cxSH7E1siud++5ZwtIogFQPZB40uJOlKnIDmyirk8jX2Vojkcy5/xG+HFeUQkXmM1JtAEIhrGOS2hZcs79jqGGEXoCOJ0MSxtdlkh03Z+eu7gJmAel0lrZ9sEv2NxXqDexti+HxYdpDzu4Gwy8d4NjhYMaITjsJyy6v1gQfy8W3bJkCzvb1GpebY3iWS72HUXXrMJ9g="
 
-#branches:
-  #only:
-    #- master
+branches:
+  only:
+    - master
