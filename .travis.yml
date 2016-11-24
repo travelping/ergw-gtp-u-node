@@ -16,6 +16,8 @@ deploy:
 env:
   global:
     - BUILD_IMAGE="grundrausch3n/ergw-gtp-u-node-base"
+    - GITHUB_USERNAME="grundrausch3n"
+    - secure: "Tox/AAAKjABSAEFyy5M3G8ZspKE9giZ55Ikbp6H5RGEYrg4Jh7rk3mxAqpQO+8OBqFyF9+tpvEIZ0r13QY0n6pbSLD5LZHm0dlRXmTvj4aiKfC/tHWuVgGbWviopu50cQ8XAcecqDbrjhUsH2gtudE1rYHqmFtozDo1ONpaPpT0nwlwA6Y/m/MnU5QkxdV+UNGkrkp4oUb22oEXhZzUosButDB7zupg8Ohq3r+j7chaFPs3dp6fgHAmI9H/8dKMiYs0Au8E2BCPuCXIc0yb/4y69PpSpKtUQ1ZfQ20LZw5wIV5/7mjZjhDTpvQyFsaQnOz7jqMklcjgmLfbBWvm9AoIh95j8g28jYWisvzCpgrRRGRmvzRkDxaNek1VYyQRUPsiFguR6rSrEK/5pUC3gT/3YaomTc2EvvQBlaNKM3ArBE4mGIex0T7XhLOqiSlhEl3Tgl39OVwfU1V7xmsGvizIKJmzZxSQog+JXpfHCFUuLo1q/j7JgURjYXBk8n+8qnNNalRV0rvKYpnOLvz6q8vXJRWmGTH77fWqtNOV7uZODqvCXjRrbjRlFlwTA6QjZ4oHiZhnBs5cFs/tClYmKC5AbgsBEv9nGWn1Xv2zDN5xB4iNEZ0ePJsMHUXi8/dpkRlj981bHjkDm9DhfShMvvX3ss5AiLA3/qrHZePgULco="
 
 before_install:
   - sudo apt-get -qq update
