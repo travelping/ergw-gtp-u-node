@@ -1,2 +1,3 @@
 debian/pre-start.sh etc/ergw-gtp-u-node/
 debian/gtp0.cfg /etc/network/interfaces.d/
+config/ergw-gtp-u-node.config etc/ergw-gtp-u-node/
