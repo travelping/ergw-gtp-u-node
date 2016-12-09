@@ -1,5 +1,6 @@
-ergw-gtp-u-node (1.1.0) unstable; urgency=medium
+ergw-gtp-u-node (1.1.0-0) unstable; urgency=medium
 
+  * release version 1.1.0
   * Move sys.config from /opt/ergw-gtp-u-node/releases/<version> into /etc/ergw-gtp-u-node
 
  -- Andreas Schultz <aschultz@warp10.net>  Fri, 09 Dec 2016 14:54:01 +0100
