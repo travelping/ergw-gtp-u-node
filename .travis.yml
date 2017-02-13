@@ -15,9 +15,9 @@ deploy:
 
 env:
   global:
-    - BUILD_IMAGE="grundrausch3n/ergw-gtp-u-node-base"
-    - DOCKER_USERNAME="grundrausch3n"
-    - secure: "Tox/AAAKjABSAEFyy5M3G8ZspKE9giZ55Ikbp6H5RGEYrg4Jh7rk3mxAqpQO+8OBqFyF9+tpvEIZ0r13QY0n6pbSLD5LZHm0dlRXmTvj4aiKfC/tHWuVgGbWviopu50cQ8XAcecqDbrjhUsH2gtudE1rYHqmFtozDo1ONpaPpT0nwlwA6Y/m/MnU5QkxdV+UNGkrkp4oUb22oEXhZzUosButDB7zupg8Ohq3r+j7chaFPs3dp6fgHAmI9H/8dKMiYs0Au8E2BCPuCXIc0yb/4y69PpSpKtUQ1ZfQ20LZw5wIV5/7mjZjhDTpvQyFsaQnOz7jqMklcjgmLfbBWvm9AoIh95j8g28jYWisvzCpgrRRGRmvzRkDxaNek1VYyQRUPsiFguR6rSrEK/5pUC3gT/3YaomTc2EvvQBlaNKM3ArBE4mGIex0T7XhLOqiSlhEl3Tgl39OVwfU1V7xmsGvizIKJmzZxSQog+JXpfHCFUuLo1q/j7JgURjYXBk8n+8qnNNalRV0rvKYpnOLvz6q8vXJRWmGTH77fWqtNOV7uZODqvCXjRrbjRlFlwTA6QjZ4oHiZhnBs5cFs/tClYmKC5AbgsBEv9nGWn1Xv2zDN5xB4iNEZ0ePJsMHUXi8/dpkRlj981bHjkDm9DhfShMvvX3ss5AiLA3/qrHZePgULco="
+    - BUILD_IMAGE="ergw/ergw-gtp-u-node"
+    - DOCKER_USERNAME="ergwci"
+    - secure: "Bvf2wImsEk31o5QgmKvNEl7l79kXBW91X37kSQ0IOWh+5C06uGI+6Yr3qOnj6sYl27F8ffLwTM5ePcki4wX2BLfGRzA1pH4UdWs4xycFlrLOL/V6e77ZvvofQwFkiP+bKmeDg/iDud2A2HeK988OvS/+QcgGKKZTv/A3GXgTVCRSQYOBAzYjGJkd1O /riPHd1q1NA4jYYGs3dPCA+GZfJWNloXGEkP1xNASc8wxBMXEWD37zrFQnM1vv0S+/sRWtC5bRjJDa5EZHyl2GxxxtNkRtx0XvuTv3IzozArFrcThPPsBospu+ebMN2EGSg00WYxqz17Kl6D7mnf1wHmYBsvnDQKd50Gw0PjVJIoZLT8j0jiF6jl7+9eNpNqx+fRC NsL0x0k4m7mYyeW0xcerdlm88PiiARYu6AJsgLPwiCpBLpaPHzRq+lQOEt/hEjTjvq8KaLQln0t++DDdL3Gi/Pjs74iOcNEBegyUlVFEk+s9Hxo3zeKLtv45thjNth+RifQm0OT6dvWdcylJCkmjTOUDar0HXGSPtoSziGDby8nF54PfzPEQjD7zGZLcgJ1o3RPF7 Oa8otFFDae399fOa99V/huEwypf98QpjESaSZ6wypOTlP4wJFzDmDi+TfgO8NENtFR10Wfh8MCChVSQo0xULUxLwKBFnmmmEOLUzh3A="
 
 before_install:
   - sudo apt-get -qq update
@@ -36,7 +36,10 @@ script:
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  - docker push $BUILD_IMAGE 
+  - export TAG=`if [ "$TRAVIS_EVENT_TYPE" == "pull_request" ]; then echo PR-$TRAVIS_PULL_REQUEST_BRANCH ; else echo $TRAVIS_BRANCH ; fi`
+  - if [ "$TAG" == "master" ]; then export TAG="latest"; fi
+  - docker tag $BUILD_IMAGE $BUILD_IMAGE:$TAG
+  - docker push $BUILD_IMAGE:$TAG
   - echo "docker push done"
 
 notifications:

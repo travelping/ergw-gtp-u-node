@@ -1,9 +1,10 @@
 # Dockerfile can be found at https://github.com/travelping/ergw-docker-base
-FROM grundrausch3n/ergw-docker-base
+FROM ergw/ergw-docker-base
 
 WORKDIR /
-COPY _build/prod/rel/ /opt/rel/
-COPY docker/ergw-gtp-u-start.sh /opt/
+COPY _build/prod/rel/ /opt/
+COPY docker/docker-entrypoint.sh /
+COPY config/ergw-gtp-u-node.config /etc/ergw-gtp-u-node/
 
-ENTRYPOINT ["sh", "-c", "/opt/ergw-gtp-u-start.sh"]
-CMD ["/opt/rel/ergw-gtp-u-node/bin/ergw-gtp-u-node foreground"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["/opt/ergw-gtp-u-node/bin/ergw-gtp-u-node", "foreground"]
